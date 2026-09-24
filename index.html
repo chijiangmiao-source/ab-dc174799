@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>量子纠错链复核台 · 最小权匹配</title>
+  </head>
+  <body>
+    <header class="topbar">
+      <div class="brand">
+        <span class="logo">⌬</span>
+        <div>
+          <h1>超导量子芯片 · 纠错链复核台</h1>
+          <p>检测事件最短链归约一般图最小权完美匹配（Dijkstra + Blossom，精确整数）</p>
+        </div>
+      </div>
+      <div class="top-actions" id="top-actions"></div>
+    </header>
+    <main class="layout">
+      <section class="panel canvas-panel">
+        <div class="toolbar" id="toolbar"></div>
+        <div class="canvas-wrap" id="canvas-wrap"></div>
+        <div class="statusbar" id="statusbar"></div>
+      </section>
+      <aside class="panel side-panel">
+        <div id="inspector"></div>
+      </aside>
+    </main>
+    <script type="module" src="/src/main.ts"></script>
+  </body>
+</html>

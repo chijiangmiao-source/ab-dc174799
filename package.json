@@ -1,0 +1,22 @@
+{
+  "name": "qec-chain-review",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "超导量子芯片检测事件纠错链复核：Dijkstra 最短链 + 精确整数最小权完美匹配（Blossom）",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc --noEmit && vite build",
+    "preview": "node server/server.mjs",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "verify": "node scripts/verify.mjs"
+  },
+  "devDependencies": {
+    "@types/node": "^20.16.10",
+    "jsdom": "^29.1.1",
+    "typescript": "^5.6.2",
+    "vite": "^5.4.8",
+    "vitest": "^2.1.2"
+  }
+}
