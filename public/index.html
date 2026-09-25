@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>超导量子芯片纠错链复核台</title>
+  <link rel="stylesheet" href="/style.css" />
+</head>
+<body>
+  <header>
+    <h1>纠错链复核台</h1>
+    <p class="sub">
+      每轮读出的检测事件须由互不重复的链消去：事件两两配对，或连向可作终点的边界。
+      系统在 Web Worker 内以精确整数最小权匹配求总代价最小的链集，同成本时按
+      “事件录入顺序逐项比较：边界优先、随后另一端标识升序”输出规范结论。
+    </p>
+  </header>
+
+  <section class="toolbar">
+    <div class="group">
+      <label>行 <input id="rows" type="number" min="1" max="60" value="6" /></label>
+      <label>列 <input id="cols" type="number" min="1" max="60" value="8" /></label>
+      <button id="applySize">应用网格尺寸</button>
+    </div>
+    <div class="group" id="modes">
+      <span class="hint">模式：</span>
+      <button data-mode="event" class="mode active">检测事件</button>
+      <button data-mode="boundary" class="mode">边界</button>
+      <button data-mode="edge" class="mode">边代价</button>
+      <button data-mode="inspect" class="mode">查看依据</button>
+    </div>
+    <div class="group">
+      <button id="solve" class="primary">求解</button>
+      <button id="cancel" disabled>取消</button>
+      <button id="example">载入示例</button>
+      <button id="clearAll">清空</button>
+    </div>
+  </section>
+
+  <main>
+    <div class="canvasWrap">
+      <canvas id="grid"></canvas>
+      <p class="legend">
+        <span class="sw event"></span>检测事件（数字为录入顺序）
+        <span class="sw boundary"></span>可作终点的边界格
+        <span class="sw edge"></span>边代价标注（仅非 1 时显示）
+      </p>
+    </div>
+
+    <aside>
+      <section class="panel" id="statusPanel">
+        <h2>状态</h2>
+        <div id="status"></div>
+        <ul id="errors" class="errors"></ul>
+      </section>
+
+      <section class="panel" id="edgePanel" hidden>
+        <h2>边代价编辑</h2>
+        <div id="edgeInfo"></div>
+        <div class="row">
+          <input id="edgeCost" type="number" min="1" step="1" />
+          <button id="edgeApply">设置</button>
+        </div>
+        <div id="edgeError" class="errors"></div>
+      </section>
+
+      <section class="panel" id="resultPanel" hidden>
+        <h2>求解结果 <span id="staleBadge" class="badge" hidden>结果已过期</span></h2>
+        <div id="summary"></div>
+        <ol id="chains"></ol>
+      </section>
+
+      <section class="panel" id="inspectPanel" hidden>
+        <h2>连接依据</h2>
+        <div id="inspectBody"></div>
+      </section>
+
+      <section class="panel">
+        <h2>导入 / 导出</h2>
+        <textarea id="jsonBox" rows="6" placeholder="粘贴规格 JSON 后点击导入"></textarea>
+        <div class="row">
+          <button id="importBtn">导入</button>
+          <button id="exportBtn">导出当前规格</button>
+        </div>
+      </section>
+    </aside>
+  </main>
+
+  <script src="/src/matching.js"></script>
+  <script src="/src/solver.js"></script>
+  <script src="/app.js"></script>
+</body>
+</html>

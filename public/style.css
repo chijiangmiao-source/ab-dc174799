@@ -1,0 +1,215 @@
+:root {
+  color-scheme: dark;
+  --bg: #17191f;
+  --panel: #20242c;
+  --border: #333947;
+  --text: #e6e9ef;
+  --muted: #9aa3b2;
+  --accent: #4d9de0;
+  --danger: #ff6b61;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  font-family: "PingFang SC", "Microsoft YaHei", system-ui, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+}
+
+header {
+  padding: 16px 24px 8px;
+}
+
+h1 { font-size: 20px; margin: 0 0 6px; }
+
+.sub {
+  margin: 0;
+  color: var(--muted);
+  font-size: 13px;
+  max-width: 960px;
+  line-height: 1.6;
+}
+
+.toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  padding: 12px 24px;
+  align-items: center;
+}
+
+.group {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 8px 12px;
+}
+
+.hint { color: var(--muted); font-size: 13px; }
+
+label { font-size: 13px; color: var(--muted); }
+
+input[type="number"] {
+  width: 64px;
+  background: #14161b;
+  color: var(--text);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 5px 8px;
+}
+
+button {
+  background: #2a2f3a;
+  color: var(--text);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 6px 14px;
+  cursor: pointer;
+  font-size: 13px;
+}
+
+button:hover:not(:disabled) { border-color: var(--accent); }
+button:disabled { opacity: 0.45; cursor: not-allowed; }
+button.primary { background: var(--accent); border-color: var(--accent); color: #0b1520; font-weight: 600; }
+button.mode.active { background: var(--accent); color: #0b1520; border-color: var(--accent); }
+button.locate {
+  margin-left: 8px;
+  padding: 1px 8px;
+  font-size: 12px;
+}
+
+main {
+  display: flex;
+  gap: 16px;
+  padding: 0 24px 24px;
+  align-items: flex-start;
+  flex-wrap: wrap;
+}
+
+.canvasWrap {
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 16px;
+  overflow: auto;
+  max-width: 100%;
+}
+
+canvas { display: block; cursor: crosshair; }
+
+.legend {
+  color: var(--muted);
+  font-size: 12px;
+  display: flex;
+  gap: 18px;
+  align-items: center;
+  margin: 12px 0 0;
+  flex-wrap: wrap;
+}
+
+.sw {
+  display: inline-block;
+  width: 12px;
+  height: 12px;
+  border-radius: 3px;
+  margin-right: 5px;
+  vertical-align: -2px;
+}
+.sw.event { background: #e5484d; border-radius: 50%; }
+.sw.boundary { background: rgba(77,157,224,0.4); border: 1px solid #4d9de0; }
+.sw.edge { background: #e8a13d; }
+
+aside {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  width: 420px;
+  max-width: 100%;
+}
+
+.panel {
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 12px 16px;
+}
+
+.panel h2 {
+  font-size: 14px;
+  margin: 0 0 8px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.panel h3 { font-size: 13px; margin: 4px 0; }
+
+.badge {
+  background: #5a4a1f;
+  color: #ffd33d;
+  font-size: 11px;
+  border-radius: 4px;
+  padding: 2px 6px;
+}
+
+.errors {
+  list-style: none;
+  margin: 8px 0 0;
+  padding: 0;
+  color: var(--danger);
+  font-size: 13px;
+}
+
+.errors li { margin: 4px 0; }
+
+#status { font-size: 13px; color: var(--muted); }
+
+#chains {
+  margin: 8px 0 0;
+  padding-left: 4px;
+  list-style: none;
+  max-height: 300px;
+  overflow: auto;
+}
+
+#chains li {
+  border-left: 4px solid transparent;
+  padding: 6px 10px;
+  margin: 6px 0;
+  background: #191d24;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 13px;
+}
+
+#chains li.selected { outline: 1px solid var(--accent); }
+
+.chainHead { font-weight: 600; }
+.chainEps { color: var(--text); margin-top: 2px; }
+.chainEdges { color: var(--muted); margin-top: 2px; font-size: 12px; }
+
+#summary { font-size: 13px; line-height: 1.7; }
+
+#inspectBody { font-size: 13px; line-height: 1.6; }
+#inspectBody ul { margin: 4px 0; padding-left: 20px; max-height: 180px; overflow: auto; }
+.note { color: var(--muted); font-size: 12px; }
+
+textarea {
+  width: 100%;
+  background: #14161b;
+  color: var(--text);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  font-family: ui-monospace, monospace;
+  font-size: 12px;
+  padding: 8px;
+}
+
+.row { display: flex; gap: 8px; margin-top: 8px; }
+
+#edgeError { color: var(--danger); font-size: 12px; margin-top: 6px; }

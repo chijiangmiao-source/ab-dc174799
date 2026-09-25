@@ -1,0 +1,11 @@
+{
+  "name": "qec-chain-review",
+  "version": "1.0.0",
+  "private": true,
+  "description": "超导量子芯片读出检测事件的纠错链复核台：浏览器内以精确整数最小权匹配求总代价最小的链集",
+  "scripts": {
+    "start": "node server.js",
+    "test": "node test/run.js",
+    "verify": "node verify.js"
+  }
+}
